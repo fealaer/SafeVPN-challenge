@@ -1,0 +1,19 @@
+{
+  "name": "safevpn-challenge",
+  "version": "0.0.1",
+  "description": "SafeVPN Challenge task",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fealaer/SafeVPN-challenge.git"
+  },
+  "author": "fealaer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fealaer/SafeVPN-challenge/issues"
+  },
+  "homepage": "https://github.com/fealaer/SafeVPN-challenge#readme"
+}
