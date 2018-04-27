@@ -2,17 +2,19 @@
   "name": "safevpn-challenge",
   "version": "0.0.1",
   "description": "SafeVPN Challenge task",
-  "main": "server.js",
+  "main": "server",
   "engines": {
     "npm": ">=3",
     "node": ">=6"
   },
   "scripts": {
     "start": "npx cross-env NODE_ENV=production node server",
+    "start:dev": "npx concurrently \"npm run test:watch\" \"npm run lint:watch\" \"npx nodemon\"",
     "lint": "npm run lint:all",
     "lint:eslint": "npx eslint --ignore-path .gitignore",
     "lint:all": "npm run lint:eslint .",
     "lint:fix": "npm run lint --fix",
+    "lint:watch": "npx esw --watch --changed --quiet --ignore-path .gitignore .",
     "precommit": "npm run test",
     "pretest": "npm run test:clean && npm run lint",
     "test:clean": "npx rimraf ./coverage",
@@ -59,11 +61,15 @@
     "express": "4.16.3"
   },
   "devDependencies": {
+    "concurrently": "3.5.1",
     "coveralls": "3.0.0",
     "eslint": "4.19.1",
     "eslint-config-airbnb-base": "12.1.0",
     "eslint-plugin-import": "2.11.0",
-    "jest": "22.4.3"
+    "eslint-watch": "3.1.4",
+    "jest": "22.4.3",
+    "nodemon": "1.17.3",
+    "rimraf": "2.6.2"
   },
   "repository": {
     "type": "git",
