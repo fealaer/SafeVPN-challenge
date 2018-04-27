@@ -8,13 +8,17 @@
     "node": ">=6"
   },
   "scripts": {
-    "start": "NODE_ENV=production node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx cross-env NODE_ENV=production node server",
     "lint": "npm run lint:all",
     "lint:eslint": "npx eslint --ignore-path .gitignore",
     "lint:all": "npm run lint:eslint .",
     "lint:fix": "npm run lint --fix",
-    "precommit": "npm run lint:fix"
+    "precommit": "npm run test",
+    "pretest": "npm run test:clean && npm run lint",
+    "test:clean": "npx rimraf ./coverage",
+    "test": "npx cross-env NODE_ENV=test npx jest --coverage",
+    "test:watch": "npx cross-env NODE_ENV=test npx jest --watchAll",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "eslintConfig": {
     "extends": "airbnb-base",
@@ -28,10 +32,33 @@
       "sourceType": "module"
     }
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "server/**/*.{js}",
+      "!server/**/*.test.{js}",
+      "!server/index.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 98,
+        "branches": 91,
+        "functions": 98,
+        "lines": 98
+      }
+    },
+    "moduleDirectories": [
+      "node_modules",
+      "server"
+    ],
+    "testRegex": "__tests__/.*\\.test\\.js$"
+  },
   "devDependencies": {
+    "coveralls": "3.0.0",
+    "cross-env": "5.1.4",
     "eslint": "4.19.1",
     "eslint-config-airbnb-base": "12.1.0",
-    "eslint-plugin-import": "2.11.0"
+    "eslint-plugin-import": "2.11.0",
+    "jest": "22.4.3"
   },
   "repository": {
     "type": "git",
