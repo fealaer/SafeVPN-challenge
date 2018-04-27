@@ -9,7 +9,29 @@
   },
   "scripts": {
     "start": "NODE_ENV=production node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npm run lint:all",
+    "lint:eslint": "npx eslint --ignore-path .gitignore",
+    "lint:all": "npm run lint:eslint .",
+    "lint:fix": "npm run lint --fix",
+    "precommit": "npm run lint:fix"
+  },
+  "eslintConfig": {
+    "extends": "airbnb-base",
+    "env": {
+      "node": true,
+      "jest": true,
+      "es6": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module"
+    }
+  },
+  "devDependencies": {
+    "eslint": "4.19.1",
+    "eslint-config-airbnb-base": "12.1.0",
+    "eslint-plugin-import": "2.11.0"
   },
   "repository": {
     "type": "git",
