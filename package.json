@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "SafeVPN Challenge task",
   "main": "server.js",
+  "engines": {
+    "npm": ">=3",
+    "node": ">=6"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
