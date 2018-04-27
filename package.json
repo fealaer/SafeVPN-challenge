@@ -36,7 +36,8 @@
     "collectCoverageFrom": [
       "server/**/*.{js}",
       "!server/**/*.test.{js}",
-      "!server/index.js"
+      "!server/index.js",
+      "!server/server.js"
     ],
     "coverageThreshold": {
       "global": {
@@ -54,7 +55,8 @@
   },
   "dependencies": {
     "config": "1.30.0",
-    "cross-env": "5.1.4"
+    "cross-env": "5.1.4",
+    "express": "4.16.3"
   },
   "devDependencies": {
     "coveralls": "3.0.0",
