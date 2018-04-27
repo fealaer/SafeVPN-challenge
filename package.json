@@ -39,7 +39,8 @@
       "server/**/*.{js}",
       "!server/**/*.test.{js}",
       "!server/index.js",
-      "!server/server.js"
+      "!server/server.js",
+      "!server/register/*.js"
     ],
     "coverageThreshold": {
       "global": {
@@ -59,7 +60,8 @@
     "config": "1.30.0",
     "cross-env": "5.1.4",
     "express": "4.16.3",
-    "morgan": "1.9.0"
+    "morgan": "1.9.0",
+    "winston": "2.4.2"
   },
   "devDependencies": {
     "concurrently": "3.5.1",

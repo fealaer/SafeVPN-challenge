@@ -1,12 +1,12 @@
 const config = require('config');
 const express = require('express');
-const register = require('./register');
+const { requestLogger, logger } = require('./register');
 
 const app = express();
 
-app.use(register.requestLogger);
+app.use(requestLogger);
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
 const { port } = config.server;
-app.listen(port, () => console.log(`Sever listening on port ${port}!`));
+app.listen(port, () => logger.info(`Sever listening on port ${port}!`));
