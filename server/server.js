@@ -1,10 +1,17 @@
 const config = require('config');
 const express = require('express');
-const { requestLogger, logger } = require('./register');
+const {
+  normalResponseLogger,
+  clientErrorsLogger,
+  serverErrorsLogger,
+  logger,
+} = require('./register');
 
 const app = express();
 
-app.use(requestLogger);
+app.use(normalResponseLogger);
+app.use(clientErrorsLogger);
+app.use(serverErrorsLogger);
 
 app.get('/', (req, res) => res.send('Hello World!'));
 

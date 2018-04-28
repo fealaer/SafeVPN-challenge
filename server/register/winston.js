@@ -5,16 +5,16 @@ winston.emitErrs = true;
 
 const prodTransports = [
   new winston.transports.File({
-    level: 'warning',
     filename: './logs/prod-logs.log',
-    handleExceptions: true,
-    json: true,
     maxsize: 5242880,
     maxFiles: 5,
+    level: 'info',
+    handleExceptions: true,
+    json: true,
     colorize: false,
   }),
   new winston.transports.Console({
-    level: 'warning',
+    level: 'info',
     handleExceptions: true,
     json: false,
     colorize: true,
@@ -23,13 +23,13 @@ const prodTransports = [
 
 const devTransports = [
   new winston.transports.File({
-    level: 'debug',
     filename: './logs/dev-logs.log',
+    maxsize: 1048576,
+    maxFiles: 2,
+    level: 'debug',
     handleExceptions: true,
-    json: true,
-    maxsize: 5242880,
-    maxFiles: 5,
-    colorize: false,
+    json: false,
+    colorize: true,
   }),
   new winston.transports.Console({
     level: 'debug',
@@ -44,6 +44,10 @@ const logger = new winston.Logger({
 });
 
 module.exports = logger;
-module.exports.stream = {
-  write: message => logger.info(message.trim()),
-};
+const createStreamForLevel = level => ({
+  write: message => logger[level](message.trim()),
+});
+
+module.exports.infoStream = createStreamForLevel('info');
+module.exports.warningStream = createStreamForLevel('warn');
+module.exports.errorStream = createStreamForLevel('error');

@@ -1,7 +1,9 @@
-const requestLogger = require('./morgan').logger;
+const { normalResponseLogger, clientErrorsLogger, serverErrorsLogger } = require('./morgan');
 const logger = require('./winston');
 
 module.exports = {
-  requestLogger,
+  normalResponseLogger,
+  clientErrorsLogger,
+  serverErrorsLogger,
   logger,
 };
