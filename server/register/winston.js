@@ -6,7 +6,7 @@ winston.emitErrs = true;
 const prodTransports = [
   new winston.transports.File({
     level: 'warning',
-    filename: './logs/all-logs.log',
+    filename: './logs/prod-logs.log',
     handleExceptions: true,
     json: true,
     maxsize: 5242880,
@@ -22,6 +22,15 @@ const prodTransports = [
 ];
 
 const devTransports = [
+  new winston.transports.File({
+    level: 'debug',
+    filename: './logs/dev-logs.log',
+    handleExceptions: true,
+    json: true,
+    maxsize: 5242880,
+    maxFiles: 5,
+    colorize: false,
+  }),
   new winston.transports.Console({
     level: 'debug',
     handleExceptions: true,
