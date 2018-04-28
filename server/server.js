@@ -1,5 +1,7 @@
 const config = require('config');
 const express = require('express');
+const helmet = require('helmet');
+
 const {
   normalResponseLogger,
   clientErrorsLogger,
@@ -8,6 +10,8 @@ const {
 } = require('./register');
 
 const app = express();
+
+app.use(helmet());
 
 app.use(normalResponseLogger);
 app.use(clientErrorsLogger);
