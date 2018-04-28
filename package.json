@@ -15,8 +15,9 @@
     "lint:all": "npm run lint:eslint .",
     "lint:fix": "npm run lint --fix",
     "lint:watch": "npx esw --watch --changed --quiet --ignore-path .gitignore .",
+    "check-circular-dependencies": "npx madge --circular server",
     "precommit": "npm run test",
-    "pretest": "npm run test:clean && npm run lint",
+    "pretest": "npm run test:clean && npm run lint && npm run check-circular-dependencies",
     "test:clean": "npx rimraf ./coverage",
     "test": "npx cross-env NODE_ENV=test npx jest --coverage",
     "test:watch": "npx cross-env NODE_ENV=test npx jest --watchAll",
@@ -71,6 +72,7 @@
     "eslint-plugin-import": "2.11.0",
     "eslint-watch": "3.1.4",
     "jest": "22.4.3",
+    "madge": "3.0.1",
     "nodemon": "1.17.3",
     "rimraf": "2.6.2"
   },
