@@ -8,6 +8,7 @@ const {
   serverErrorsLogger,
   logger,
 } = require('./register');
+const setUpRouteHandlers = require('./routeHandlers');
 
 const app = express();
 
@@ -17,7 +18,7 @@ app.use(normalResponseLogger);
 app.use(clientErrorsLogger);
 app.use(serverErrorsLogger);
 
-app.get('/', (req, res) => res.send('Hello World!'));
+setUpRouteHandlers(app);
 
 const { port } = config.server;
 app.listen(port, () => logger.info(`Sever listening on port ${port}!`));

@@ -20,7 +20,7 @@
     "pretest": "npm run test:clean && npm run lint && npm run check-circular-dependencies",
     "test:clean": "npx rimraf ./coverage",
     "test": "npx cross-env NODE_ENV=test npx jest --coverage",
-    "test:watch": "npx cross-env NODE_ENV=test npx jest --watchAll",
+    "test:watch": "npx cross-env NODE_ENV=test npx jest --coverage --watchAll",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "eslintConfig": {
@@ -41,7 +41,8 @@
       "!server/**/*.test.{js}",
       "!server/index.js",
       "!server/server.js",
-      "!server/register/*.js"
+      "!server/register/*.js",
+      "!server/middlewares/validators/*.js"
     ],
     "coverageThreshold": {
       "global": {
@@ -61,6 +62,7 @@
     "config": "1.30.0",
     "cross-env": "5.1.4",
     "express": "4.16.3",
+    "express-validator": "5.1.2",
     "helmet": "3.12.0",
     "morgan": "1.9.0",
     "winston": "2.4.2"
