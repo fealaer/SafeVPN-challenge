@@ -1,8 +1,11 @@
 const mockingoose = require('mockingoose').default;
 const get = require('../get');
 const PricingData = require('../../../../models/pricingData');
+const redis = require('../../../../config/cache/redis');
 
 const findOneSpy = jest.spyOn(PricingData, 'findOne');
+
+redis.setex = jest.fn().mockImplementation(() => Promise.resolve());
 
 beforeEach(() => {
   mockingoose.resetAll();
@@ -54,7 +57,20 @@ test('should return json with returned coupon', () => {
     });
 });
 
-test('should return empty json is coupon was not found', () => {
+test('should cache resulted json to redis for 1 hour', () => {
+  const couponName = 'Test coupon name';
+  req.query.coupon = couponName;
+  defaultPricing.couponName = couponName;
+  mockingoose.PricingData.toReturn(defaultPricing, 'findOne');
+  return get(req, res)
+    .then(() => {
+      const key = ['query', 'coupon', couponName].join(':');
+      expect(redis.setex).toHaveBeenCalledWith(key, 3600, JSON.stringify(defaultPricing));
+      mockingoose.PricingData.reset('find');
+    });
+});
+
+test('should return empty json if coupon was not found', () => {
   mockingoose.PricingData.toReturn(undefined, 'findOne');
   return get(req, res)
     .then(() => {

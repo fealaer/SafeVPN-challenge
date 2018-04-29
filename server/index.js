@@ -1,5 +1,2 @@
-const path = require('path');
-
-process.env.NODE_CONFIG_DIR = path.join(__dirname, './config/env');
-
+require('./setUpConfig');
 require('./server');

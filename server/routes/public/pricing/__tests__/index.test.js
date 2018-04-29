@@ -8,5 +8,5 @@ test('should set up pricing get route', () => {
     get: jest.fn(),
   };
   index(app);
-  expect(app.get).toHaveBeenCalledWith('/pricing', [couponValidator, handleValidationErrors], get);
+  expect(app.get).toHaveBeenCalledWith('/pricing', couponValidator, handleValidationErrors, expect.any(Function), get);
 });

@@ -28,3 +28,4 @@ const { port } = config.server;
 app.listen(port, () => logger.info(`Sever listening on port ${port}!`));
 
 require('./config/data/mongoose');
+require('./config/cache/redis').connect();

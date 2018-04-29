@@ -5,5 +5,9 @@
   },
   "db": {
     "url": "mongodb://localhost:27017/safervpn-challenge-fealaer"
+  },
+  "redis": {
+    "port": 6379,
+    "hostAddress": "localhost"
   }
 }
