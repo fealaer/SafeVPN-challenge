@@ -1,9 +1,20 @@
 const logger = require('../logger');
+const isValidationError = require('../helpers/isValidationError');
 
-const format = error => `${error.status} - ${error.code} - ${error.stack}`;
+const formatValidationDetails = error =>
+  `${error.name}: ${error.message} - ${JSON.stringify(error.errors)}`;
 
-module.exports = error => {
-  error.status = error.status || 500;
-  logger.error(format(error));
-  return error;
+const chooseDetails = error =>
+  (isValidationError(error) ? formatValidationDetails(error) : error.stack);
+
+const chooseLevel = error => (error.status < 500 ? 'warn' : 'error');
+
+const format = (error, details) => `${error.status} - ${error.code} - ${details}`;
+
+module.exports = (error) => {
+  const err = error;
+  err.status = err.status || 500;
+  const level = chooseLevel(error);
+  logger[level](format(err, chooseDetails(error)));
+  return err;
 };

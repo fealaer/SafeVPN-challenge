@@ -1,5 +1,3 @@
 const publicRoutes = require('./public');
 
-module.exports = app => {
-  publicRoutes(app);
-};
+module.exports = app => publicRoutes(app);
