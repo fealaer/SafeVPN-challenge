@@ -41,7 +41,7 @@
       "!server/**/*.test.{js}",
       "!server/index.js",
       "!server/server.js",
-      "!server/register/*.js",
+      "!server/config/loggers/*.js",
       "!server/middlewares/validators/*.js"
     ],
     "coverageThreshold": {
