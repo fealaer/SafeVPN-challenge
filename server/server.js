@@ -7,7 +7,7 @@ const {
   clientErrorsLogger,
   serverErrorsLogger,
 } = require('./config/loggers/morgan');
-const { logger } = require('./config/loggers/winston');
+const { logger } = require('./logger');
 const setUpRouteHandlers = require('./routeHandlers');
 
 const app = express();
