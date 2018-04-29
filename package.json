@@ -9,6 +9,7 @@
   },
   "scripts": {
     "start": "npx cross-env NODE_ENV=production npx pm2 start server",
+    "stop": "npx pm2 stop server",
     "start:dev": "npx concurrently \"npm run test:watch\" \"npm run lint:watch\" \"npx nodemon\"",
     "lint": "npx eslint --ignore-path .gitignore .",
     "lint:watch": "npx esw --watch --changed --quiet --ignore-path .gitignore .",
