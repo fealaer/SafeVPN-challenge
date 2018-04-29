@@ -1,0 +1,2 @@
+require('./setUpConfig');
+require('./server');
