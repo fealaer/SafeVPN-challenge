@@ -26,3 +26,5 @@ app.use(returnError);
 
 const { port } = config.server;
 app.listen(port, () => logger.info(`Sever listening on port ${port}!`));
+
+require('./config/data/mongoose');
