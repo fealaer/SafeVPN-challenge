@@ -6,8 +6,8 @@ const {
   normalResponseLogger,
   clientErrorsLogger,
   serverErrorsLogger,
-  logger,
-} = require('./register');
+} = require('./config/loggers/morgan');
+const { logger } = require('./config/loggers/winston');
 const setUpRouteHandlers = require('./routeHandlers');
 
 const app = express();

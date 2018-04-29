@@ -1,5 +1,5 @@
 const winston = require('winston');
-const isProduction = require('../helpers/isProduction');
+const isProduction = require('../../helpers/isProduction');
 
 winston.emitErrs = true;
 
