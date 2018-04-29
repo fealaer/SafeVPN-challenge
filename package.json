@@ -10,10 +10,7 @@
   "scripts": {
     "start": "npx cross-env NODE_ENV=production node server",
     "start:dev": "npx concurrently \"npm run test:watch\" \"npm run lint:watch\" \"npx nodemon\"",
-    "lint": "npm run lint:all",
-    "lint:eslint": "npx eslint --ignore-path .gitignore",
-    "lint:all": "npm run lint:eslint .",
-    "lint:fix": "npm run lint --fix",
+    "lint": "npx eslint --ignore-path .gitignore .",
     "lint:watch": "npx esw --watch --changed --quiet --ignore-path .gitignore .",
     "check-circular-dependencies": "npx madge --circular server",
     "precommit": "npm run test",
