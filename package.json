@@ -17,8 +17,7 @@
     "pretest": "npm run test:clean && npm run lint && npm run check-circular-dependencies",
     "test:clean": "npx rimraf ./coverage",
     "test": "npx cross-env NODE_ENV=test npx jest --coverage",
-    "test:watch": "npx cross-env NODE_ENV=test npx jest --coverage --watchAll",
-    "coveralls": "cat ./coverage/lcov.info | coveralls"
+    "test:watch": "npx cross-env NODE_ENV=test npx jest --coverage --watchAll"
   },
   "eslintConfig": {
     "extends": "airbnb-base",
