@@ -6,7 +6,7 @@ const {
   clientErrorsLogger,
   serverErrorsLogger,
 } = require('./config/loggers/morgan');
-const { logger } = require('./logger');
+const logger = require('./logger');
 const setUpRouteHandlers = require('./routeHandlers');
 const notFound = require('./middlewares/notFound');
 const returnError = require('./middlewares/returnError');
