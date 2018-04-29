@@ -38,7 +38,7 @@ const set = (key, val) => getClient().setAsync(key, val);
 const setex = (key, seconds, val) => getClient().setexAsync(key, seconds, val);
 
 module.exports = {
-  client,
+  getClient,
   get,
   set,
   setex,
