@@ -5,6 +5,7 @@ jest.mock('../pricing');
 
 test('should set up pricing routes', () => {
   const app = {};
-  index(app);
-  expect(pricing).toHaveBeenCalledWith(app);
+  const limiter = {};
+  index(app, limiter);
+  expect(pricing).toHaveBeenCalledWith(app, limiter);
 });

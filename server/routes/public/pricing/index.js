@@ -1,11 +1,10 @@
 const couponValidator = require('../../../middlewares/validators/coupon').inQuery;
-const { getLimiter } = require('../../../config/limiter/limiter');
 const handleValidationErrors = require('../../../middlewares/handleValidationErrors');
 const handleRequestWithCache = require('../../../middlewares/handleRequestWithCache');
 const get = require('./get');
 
-module.exports = (app) => {
-  app.get('/pricing', getLimiter(app)({
+module.exports = (app, limiter) => {
+  app.get('/pricing', limiter({
     path: '/pricing',
     method: 'get',
     lookup: ['connection.remoteAddress', 'headers.x-forwarded-for'],

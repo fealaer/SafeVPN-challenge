@@ -5,6 +5,7 @@ jest.mock('../public');
 
 test('should set up public routes', () => {
   const app = {};
-  index(app);
-  expect(publicRoutes).toHaveBeenCalledWith(app);
+  const limiter = {};
+  index(app, limiter);
+  expect(publicRoutes).toHaveBeenCalledWith(app, limiter);
 });

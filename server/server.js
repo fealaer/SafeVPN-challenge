@@ -19,7 +19,10 @@ app.use(normalResponseLogger);
 app.use(clientErrorsLogger);
 app.use(serverErrorsLogger);
 
-routes(app);
+const redisClient = require('./config/cache/redis').connect();
+const limiter = require('./config/limiter/limiter').config(app, redisClient);
+
+routes(app, limiter);
 
 app.use(notFound);
 app.use(returnError);
@@ -28,5 +31,3 @@ const { port } = config.server;
 app.listen(port, () => logger.info(`Sever listening on port ${port}!`));
 
 require('./config/data/mongoose');
-const redisClient = require('./config/cache/redis').connect();
-require('./config/limiter/limiter').config(app, redisClient);

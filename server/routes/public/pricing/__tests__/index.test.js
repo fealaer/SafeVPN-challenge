@@ -1,15 +1,20 @@
 const index = require('../index');
-const limiter = require('../../../../config/limiter/limiter');
 const couponValidator = require('../../../../middlewares/validators/coupon').inQuery;
 const handleValidationErrors = require('../../../../middlewares/handleValidationErrors');
+const handleRequestWithCache = require('../../../../middlewares/handleRequestWithCache');
 const get = require('../get');
 
-limiter.getLimiter = jest.fn();
+const cacheMiddleware = {};
+jest.mock('../../../../middlewares/handleRequestWithCache');
+handleRequestWithCache.mockReturnValue(cacheMiddleware);
 
 test('should set up pricing get route', () => {
   const app = {
     get: jest.fn(),
   };
-  index(app);
-  expect(app.get).toHaveBeenCalledWith('/pricing', expect.any(Function), couponValidator, handleValidationErrors, expect.any(Function), get);
+  const limiterMiddleware = {};
+  const limiter = jest.fn().mockReturnValue(limiterMiddleware);
+  index(app, limiter);
+  expect(app.get)
+    .toHaveBeenCalledWith('/pricing', limiterMiddleware, couponValidator, handleValidationErrors, cacheMiddleware, get);
 });
