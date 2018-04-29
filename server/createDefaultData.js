@@ -18,7 +18,7 @@ const createDefaultCoupon = () => Coupon
       return;
     }
     return Promise
-      .all(['test', '']
+      .all(['', 'test', 'winter-2018']
         .map(name => new Coupon({ name }))
         .map(coupon => coupon.save())
       )
@@ -35,10 +35,10 @@ const createDefaultPricingData = () => PricingData
       return;
     }
     return Promise
-      .all(['test', '']
+      .all(['', 'test', 'winter-2018']
         .map((couponName, index) => new PricingData({
           couponName,
-          pricingData: { price: index * 1000 },
+          pricingData: { price: (index + 1) * 1000 },
         }))
         .map(pricingData => pricingData.save())
       )
