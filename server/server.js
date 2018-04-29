@@ -7,7 +7,7 @@ const {
   serverErrorsLogger,
 } = require('./config/loggers/morgan');
 const logger = require('./logger');
-const setUpRouteHandlers = require('./routeHandlers');
+const routes = require('./routes');
 const notFound = require('./middlewares/notFound');
 const returnError = require('./middlewares/returnError');
 
@@ -19,7 +19,7 @@ app.use(normalResponseLogger);
 app.use(clientErrorsLogger);
 app.use(serverErrorsLogger);
 
-setUpRouteHandlers(app);
+routes(app);
 
 app.use(notFound);
 app.use(returnError);
