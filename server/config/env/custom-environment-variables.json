@@ -2,5 +2,12 @@
   "server": {
     "host": "SERVER_HOST",
     "port": "SERVER_PORT"
+  },
+  "db": {
+    "url": "DB_URL"
+  },
+  "redis": {
+    "port": "REDIS_PORT",
+    "hostAddress": "REDIS_HOST"
   }
 }

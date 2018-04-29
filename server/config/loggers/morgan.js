@@ -1,6 +1,6 @@
 const morgan = require('morgan');
 const { infoStream, warningStream, errorStream } = require('./winston');
-const isProduction = require('../helpers/isProduction');
+const isProduction = require('../../helpers/isProduction');
 
 const prodFormat = ':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :response-time ms - :res[content-length] ":referrer" ":user-agent"';
 const devFormat = 'dev';

@@ -8,20 +8,17 @@
     "node": ">=6"
   },
   "scripts": {
-    "start": "npx cross-env NODE_ENV=production node server",
+    "start": "npx cross-env NODE_ENV=production npx pm2 start server",
+    "stop": "npx pm2 stop server",
     "start:dev": "npx concurrently \"npm run test:watch\" \"npm run lint:watch\" \"npx nodemon\"",
-    "lint": "npm run lint:all",
-    "lint:eslint": "npx eslint --ignore-path .gitignore",
-    "lint:all": "npm run lint:eslint .",
-    "lint:fix": "npm run lint --fix",
+    "lint": "npx eslint --ignore-path .gitignore .",
     "lint:watch": "npx esw --watch --changed --quiet --ignore-path .gitignore .",
     "check-circular-dependencies": "npx madge --circular server",
     "precommit": "npm run test",
     "pretest": "npm run test:clean && npm run lint && npm run check-circular-dependencies",
     "test:clean": "npx rimraf ./coverage",
     "test": "npx cross-env NODE_ENV=test npx jest --coverage",
-    "test:watch": "npx cross-env NODE_ENV=test npx jest --watchAll",
-    "coveralls": "cat ./coverage/lcov.info | coveralls"
+    "test:watch": "npx cross-env NODE_ENV=test npx jest --coverage --watchAll"
   },
   "eslintConfig": {
     "extends": "airbnb-base",
@@ -39,9 +36,12 @@
     "collectCoverageFrom": [
       "server/**/*.{js}",
       "!server/**/*.test.{js}",
+      "!server/createDefaultData.js",
       "!server/index.js",
       "!server/server.js",
-      "!server/register/*.js"
+      "!server/config/**/*.js",
+      "!server/models/*.js",
+      "!server/middlewares/validators/*.js"
     ],
     "coverageThreshold": {
       "global": {
@@ -55,13 +55,22 @@
       "node_modules",
       "server"
     ],
-    "testRegex": "__tests__/.*\\.test\\.js$"
+    "setupTestFrameworkScriptFile": "<rootDir>/server/setUpConfig.js",
+    "testRegex": "__tests__/.*\\.test\\.js$",
+    "clearMocks": true
   },
   "dependencies": {
+    "bluebird": "3.5.1",
     "config": "1.30.0",
     "cross-env": "5.1.4",
     "express": "4.16.3",
+    "express-limiter": "1.6.1",
+    "express-validator": "5.1.2",
+    "helmet": "3.12.0",
+    "mongoose": "4.13.12",
     "morgan": "1.9.0",
+    "pm2": "2.10.3",
+    "redis": "2.8.0",
     "winston": "2.4.2"
   },
   "devDependencies": {
@@ -73,6 +82,7 @@
     "eslint-watch": "3.1.4",
     "jest": "22.4.3",
     "madge": "3.0.1",
+    "mockingoose": "2.9.1",
     "nodemon": "1.17.3",
     "rimraf": "2.6.2"
   },
