@@ -30,8 +30,6 @@
 
 ### Production
 * Start - ```npm run start```
-* Stop - ```npm run stop```
-* View Logs - ```npm run logs```
 
 ### Development
 * Start dev server - ```npm run start:dev``` -- concurrently runs test:watch, lint:watch and nodemon
