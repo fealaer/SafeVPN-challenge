@@ -10,6 +10,9 @@
 
 ## Set up
 
+### Install npx globally
+```npm install -g npx```
+
 ### Install dependencies
 * development - ```npm install```
 * production - ```npm install --production```
@@ -18,8 +21,8 @@
 #### by ENV variables (*preferable*)
 * MongoDB connection - DB_URL
 * App Server
-  * Host - SERVER_HOST
-  * Port - SERVER_PORT
+  * Host - HOST
+  * Port - PORT
 * Redis
   * Port - REDIS_PORT
   * Host - REDIS_HOST
@@ -32,7 +35,6 @@
 ### Production
 * Start - ```npm run start```
 * Stop - ```npm run stop```
-* Execute other pm2 commands - ```npx pm2 <command> <options>```
 
 ### Development
 * Start dev server - ```npm run start:dev``` -- concurrently runs test:watch, lint:watch and nodemon
