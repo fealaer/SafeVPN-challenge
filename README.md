@@ -1,5 +1,7 @@
 # SafeVPN Challenge
 
+[![Build Status](https://travis-ci.org/fealaer/SafeVPN-challenge.svg?branch=master)](https://travis-ci.org/fealaer/SafeVPN-challenge)
+
 ## Required
 * node.js >=6
 * npm >=3
@@ -35,7 +37,7 @@
 ### Development
 * Start dev server - ```npm run start:dev``` -- concurrently runs test:watch, lint:watch and nodemon
 * ES lint single run - ```npm run lint```
-* ES lint watch - ```npm run lintLwatch```
+* ES lint watch - ```npm run lint:watch```
 * Check circular dependencies - ```npm run check-circular-dependencies```
 * Unit tests single run - ```npm run test``` -- during pretest phase runs ES lint and check-circular-dependencies
 * Unit tests watch - ```npm run test:watch```
