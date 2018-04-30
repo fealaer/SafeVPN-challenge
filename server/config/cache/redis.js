@@ -11,7 +11,7 @@ let client;
 
 const connect = () => {
   client = redis
-    .createClient(config.redis.port, config.redis.hostAddress, (err) => {
+    .createClient(config.redis.url, (err) => {
       if (err) {
         handleError(err);
       }

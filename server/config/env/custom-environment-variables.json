@@ -1,13 +1,11 @@
 {
   "server": {
-    "host": "HOST",
     "port": "PORT"
   },
   "db": {
-    "url": "DB_URL"
+    "url": "MONGODB_URL"
   },
   "redis": {
-    "port": "REDIS_PORT",
-    "hostAddress": "REDIS_HOST"
+    "url": "REDIS_URL"
   }
 }
