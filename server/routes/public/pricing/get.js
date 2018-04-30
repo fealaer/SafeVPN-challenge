@@ -15,11 +15,11 @@ module.exports = (req, res, next) => {
         result = pricingData;
         delete result._id; // eslint-disable-line no-underscore-dangle
         result.createdAt = result.createdAt.toISOString();
-        const key = ['query', 'coupon', couponName].join(':');
-        redis
-          .setex(key, 3600, JSON.stringify(result))
-          .catch(handleError);
       }
+      const key = ['query', 'coupon', couponName].join(':');
+      redis
+        .setex(key, 3600, JSON.stringify(result))
+        .catch(handleError);
       res.json(result);
     })
     .catch(next);

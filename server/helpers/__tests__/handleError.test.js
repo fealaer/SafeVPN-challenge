@@ -39,3 +39,11 @@ test('should log error validation error with validation details', () => {
   errorHandler(error);
   expect(logger.warn).toHaveBeenCalledWith(`${error.status} - ${error.code} - ${error.name}: ${error.message} - ${JSON.stringify(error.errors)}`);
 });
+
+test('should not log.error not found error', () => {
+  error.status = 404;
+  error.name = 'NotFoundError';
+  errorHandler(error);
+  expect(logger.warn).not.toHaveBeenCalled();
+  expect(logger.error).not.toHaveBeenCalled();
+});

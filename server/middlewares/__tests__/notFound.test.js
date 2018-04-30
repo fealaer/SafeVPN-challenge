@@ -7,6 +7,6 @@ test('should call next with Error', () => {
   const error = next.mock.calls[0][0];
   expect(error instanceof Error).toBe(true);
   expect(error.status).toBe(404);
-  expect(error.name).toBe('Not Found');
+  expect(error.name).toBe('NotFoundError');
   expect(error.message).toBe('The endpoint has not been found!');
 });
