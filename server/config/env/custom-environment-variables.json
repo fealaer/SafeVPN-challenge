@@ -1,7 +1,7 @@
 {
   "server": {
-    "host": "SERVER_HOST",
-    "port": "SERVER_PORT"
+    "host": "HOST",
+    "port": "PORT"
   },
   "db": {
     "url": "DB_URL"

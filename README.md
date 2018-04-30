@@ -1,5 +1,7 @@
 # SafeVPN Challenge
 
+[![Build Status](https://travis-ci.org/fealaer/SafeVPN-challenge.svg?branch=master)](https://travis-ci.org/fealaer/SafeVPN-challenge)
+
 ## Required
 * node.js >=6
 * npm >=3
@@ -7,6 +9,9 @@
 * Redis
 
 ## Set up
+
+### Install npx globally
+```npm install -g npx```
 
 ### Install dependencies
 * development - ```npm install```
@@ -16,8 +21,8 @@
 #### by ENV variables (*preferable*)
 * MongoDB connection - DB_URL
 * App Server
-  * Host - SERVER_HOST
-  * Port - SERVER_PORT
+  * Host - HOST
+  * Port - PORT
 * Redis
   * Port - REDIS_PORT
   * Host - REDIS_HOST
@@ -30,12 +35,11 @@
 ### Production
 * Start - ```npm run start```
 * Stop - ```npm run stop```
-* Execute other pm2 commands - ```npx pm2 <command> <options>```
 
 ### Development
 * Start dev server - ```npm run start:dev``` -- concurrently runs test:watch, lint:watch and nodemon
 * ES lint single run - ```npm run lint```
-* ES lint watch - ```npm run lintLwatch```
+* ES lint watch - ```npm run lint:watch```
 * Check circular dependencies - ```npm run check-circular-dependencies```
 * Unit tests single run - ```npm run test``` -- during pretest phase runs ES lint and check-circular-dependencies
 * Unit tests watch - ```npm run test:watch```
