@@ -21,13 +21,9 @@
 
 ### Configure
 #### by ENV variables (*preferable*)
-* MongoDB connection - DB_URL
-* App Server
-  * Host - HOST
-  * Port - PORT
-* Redis
-  * Port - REDIS_PORT
-  * Host - REDIS_HOST
+* App Server Port - PORT
+* MongoDB connection - MONGODB_URL
+* Redis connection - REDIS_URL
 #### by JSON files
 * development - <rootDir>/server/config/env/development.json
 * production - <rootDir>/server/config/env/production.json
@@ -36,8 +32,6 @@
 
 ### Production
 * Start - ```npm run start```
-* Stop - ```npm run stop```
-* View Logs - ```npm run logs```
 
 ### Development
 * Start dev server - ```npm run start:dev``` -- concurrently runs test:watch, lint:watch and nodemon
