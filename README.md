@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/fealaer/SafeVPN-challenge.svg?branch=master)](https://travis-ci.org/fealaer/SafeVPN-challenge)
 
+[The detailed project specification in PDF](docs/challenge.pdf)
+
 ## Required
 * node.js >=6
 * npm >=3
